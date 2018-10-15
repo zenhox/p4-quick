@@ -8,7 +8,9 @@ A quick way to learn p4 language.
   * Ubuntu 16.04 desktop LTS.
   * Python 2.7.12
   * Please carefully read the **Before running the script**.
-* If you are a mac or windows user, I recommand you to download the **P4-Suite2018.ova**, which is a vm image after the script.
+* If you are a mac or windows user, I recommand you to download the **P4-Suite2018.ova**, which is a vm image after the script:
+  * [my ftp server](ftp://118.25.136.129/hox/P4-Suite2018.ova)
+  * [cloud disk](https://share.weiyun.com/581m3WN)
 
 ## Before running the script
 
@@ -28,7 +30,7 @@ sudo pip install psutil
 sudo pip install crcmod
 ```
 
-And then, **Note that:** my script recommand you to make a independent directory to hold p4 component:
+And then, **Note that:** my script recommand you to make a independent directory in home directory to hold p4 component:
 
 ```bash
 mkdir ~/P4
