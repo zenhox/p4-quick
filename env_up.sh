@@ -5,29 +5,29 @@
 # function: Set up p4 enviroment quickly
 ##############################################################
 
-# 打印脚本命令.
+# print commands
 set -x
-# 在有错误输出时停止.
+# stop on error
 set -e
 
-# 设置相关路径和版本变量
+# set some path and variable
 P4_HOME=$HOME/P4
 BMV2_COMMIT="7e25eeb19d01eee1a8e982dc7ee90ee438c10a05"
 PI_COMMIT="219b3d67299ec09b49f433d7341049256ab5f512"
 P4C_COMMIT="48a57a6ae4f96961b74bd13f6bdeac5add7bb815"
 PROTOBUF_COMMIT="v3.2.0"
 GRPC_COMMIT="v1.3.2"
-#获得cpu核数，与某些软件的编译选项相关
+#get nums of cpu
 NUM_CORES=`grep -c ^processor /proc/cpuinfo`
 
 cd $P4_HOME
-# 安装Mininet
+# install mininet
 git clone git://github.com/mininet/mininet mininet
 cd mininet
 sudo ./util/install.sh -nwv
 cd ..
 
-# 安装Protobuf
+# install protocol
 git clone https://github.com/google/protobuf.git
 cd protobuf
 git checkout ${PROTOBUF_COMMIT}
@@ -45,7 +45,7 @@ cd python
 sudo python setup.py install
 cd ../..
 
-# 安装gRPC
+# install grpc
 git clone https://github.com/grpc/grpc.git
 cd grpc
 git checkout ${GRPC_COMMIT}
@@ -59,7 +59,7 @@ cd ..
 # Install gRPC Python Package
 sudo pip install grpcio
 
-# 安装BMv2的依赖，下面PI编译时会用到。
+# install dependences of bmv2, which is needed by PI
 git clone https://github.com/p4lang/behavioral-model.git
 cd behavioral-model
 git checkout ${BMV2_COMMIT}
@@ -87,7 +87,7 @@ sudo make install
 sudo ldconfig
 cd ..
 
-# 安装Bmv2  
+# install bmv2
 cd behavioral-model
 ./autogen.sh
 ./configure --enable-debugger --with-pi
@@ -105,7 +105,7 @@ cd ..
 cd ..
 cd ..
 
-# 安装P4C，省去了check步骤（太费时间了）
+# install p4c without check
 git clone https://github.com/p4lang/p4c
 cd p4c
 git checkout ${P4C_COMMIT}
@@ -119,7 +119,5 @@ sudo ldconfig
 cd ..
 cd ..
 
-# 最后获得p4 tutorials
+# get p4 tutorials 
 git clone https://github.com/p4lang/tutorials
-sudo mv tutorials /home/p4
-sudo chown -R p4:p4 /home/p4/tutorials
