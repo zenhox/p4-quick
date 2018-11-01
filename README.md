@@ -11,6 +11,8 @@ A quick way to learn p4 language.
 * If you are a mac or windows user, I recommand you to download the **P4-Suite2018.ova**, which is a vm image after the script:
   * [my ftp server] : ftp://118.25.136.129/hox/P4-Suite2018.ova
   * [cloud disk](https://share.weiyun.com/581m3WN)
+  * username: myp4
+  * passwork: myp4
 
 ## Before running the script
 
