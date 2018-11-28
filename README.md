@@ -12,7 +12,7 @@ A quick way to learn p4 language.
   * [my ftp server] : ftp://118.25.136.129/hox/P4-Suite2018.ova
   * [cloud disk](https://share.weiyun.com/581m3WN)
   * username: myp4
-  * passwork: myp4
+  * password: myp4
 
 ## Before running the script
 
@@ -63,7 +63,7 @@ P4
 └── tutorials         #### NOTE: this is tutorials directory and your workspace.
 ```
 
-Now you can cd to tutorials and enjoy the exercises that P4 work group providing to you!
+Now you can cd to tutorials and enjoy the exercises that P4 workgroup providing to you!
 
 
 
