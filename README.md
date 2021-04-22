@@ -1,5 +1,7 @@
 # p4-quick
 
+> I will update this page in this month, please wait...
+
 ## Introduction
 
 A quick way to learn p4 language.
