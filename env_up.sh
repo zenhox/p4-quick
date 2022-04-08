@@ -1,7 +1,7 @@
 #!/bin/bash
 ##############################################################
 # origin author : P4 Lang
-# modified by: SEU Hox Zheng
+# modified by: MMH
 # function: Set up p4 enviroment quickly
 ##############################################################
 
@@ -12,12 +12,11 @@ set -e
 
 # set some path and variable
 P4_HOME=$HOME/P4
-BMV2_COMMIT="7e25eeb19d01eee1a8e982dc7ee90ee438c10a05"
-PI_COMMIT="219b3d67299ec09b49f433d7341049256ab5f512"
-P4C_COMMIT="48a57a6ae4f96961b74bd13f6bdeac5add7bb815"
-PROTOBUF_COMMIT="v3.2.0"
-GRPC_COMMIT="v1.3.2"
-#get nums of cpu
+BMV2_COMMIT="27c235944492ef55ba061fcf658b4d8102d53bd8"  # Apr 23, 2021
+PI_COMMIT="0687ef29b48d88c64dab294e09c85c8894e41be6"    # Apr 23, 2021
+P4C_COMMIT="32b157cf164148e8bbbd1f5378b8dd768888e76f"   # Apr 23, 2021
+PROTOBUF_COMMIT="v3.6.1"
+GRPC_COMMIT="v1.17.2" 
 NUM_CORES=`grep -c ^processor /proc/cpuinfo`
 
 cd $P4_HOME
@@ -114,10 +113,27 @@ mkdir -p build
 cd build
 cmake ..
 make -j${NUM_CORES}
+# make -j${NUM_CORES} check <- skip tests as p4c tests are failing currently
 sudo make install
 sudo ldconfig
 cd ..
 cd ..
 
 # get p4 tutorials 
+sudo pip install crcmod
 git clone https://github.com/p4lang/tutorials
+sudo mv tutorials /home/p4
+sudo chown -R p4:p4 /home/p4/tutorials
+
+# Vim
+cd /home/p4
+mkdir .vim
+cd .vim
+mkdir ftdetect
+mkdir syntax
+echo "au BufRead,BufNewFile *.p4      set filetype=p4" >> ftdetect/p4.vim
+echo "set bg=dark" >> /home/p4/.vimrc
+sudo mv /home/p4/.vimrc /home/p4/.vimrc
+cp /home/p4/p4.vim syntax/p4.vim
+cd /home/p4
+sudo mv .vim /home/p4/.vim
